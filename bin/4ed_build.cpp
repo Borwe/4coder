@@ -305,7 +305,8 @@ build(Arena *arena, u32 flags, u32 arch, char *code_path, char **code_files, cha
 "-D_GNU_SOURCE -fPIC "                \
 "-fno-threadsafe-statics -pthread "   \
 "-Wno-unused-result "                 \
-"-std=c++11"
+"-std=c++11 "                          \
+"$(pkg-config --cflags freetype2)"
 
 # define GCC_LIBS_COMMON       \
 "-lX11 -lpthread -lm -lrt "   \
