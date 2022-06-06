@@ -11,11 +11,13 @@
 
 //#define FM_PRINT_COMMANDS
 
+#include <iostream>
 #include "4coder_base_types.h"
 #include "4coder_version.h"
 
 #include "4coder_base_types.cpp"
 #include "4coder_malloc_allocator.cpp"
+#include <unistd.h>
 
 #define FTECH_FILE_MOVING_IMPLEMENTATION
 #include "4coder_file_moving.h"
@@ -385,6 +387,7 @@ build(Arena *arena, u32 flags, u32 arch, char *code_path, char **code_files, cha
     fm_finish_build_line(&line);
     
     Temp_Dir temp = fm_pushdir(out_path);
+    std::cout<<"CMD IS: "<<line.build_options<<std::endl;
     systemf("g++ %s -o %s", line.build_options, out_file);
     fm_popdir(temp);
 }
@@ -683,6 +686,7 @@ int main(int argc, char **argv){
     char cdir[256];
     i32 n = fm_get_current_directory(cdir, sizeof(cdir));
     Assert(n < sizeof(cdir));
+
     
     u32 flags = SUPER;
     u32 arch = Arch_X64;

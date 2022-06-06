@@ -1,2 +1,5 @@
 #vim swp file
 *swp
+
+#submodules
+./4coder_cmake_builder/
